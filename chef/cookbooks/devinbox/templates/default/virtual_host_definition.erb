@@ -1,0 +1,34 @@
+  ServerName <%= @params[:server_name] %>
+  ServerAlias <% @params[:server_aliases].each do |a| %><%= a %> <% end %>
+  DocumentRoot <%= @params[:docroot] %>
+
+  <Directory <%= @params[:docroot] %>>
+  Options <%= [@params[:directory_options] || "FollowSymLinks" ].flatten.join " " %>
+  AllowOverride <%= [@params[:allow_override] || "None" ].flatten.join " " %>
+  Order allow,deny
+  Allow from all
+  </Directory>
+
+  <% if @params[:weblogic_handler] %>
+  <Location />
+  SetHandler weblogic-handler
+  WebLogicHost localhost
+  WebLogicPort 7100
+  </Location>
+  <% end -%>
+
+  <Proxy *>
+	AddDefaultCharset off
+	Order allow,deny
+	Allow from all
+  </Proxy>
+  
+  Header add Access-Control-Allow-Origin "*"
+
+  RewriteEngine On
+  <% (@params[:rewrites] || []).each do |rewrite| %>
+  <% (rewrite[:conditions] || []).each do |condition| %>		  
+  RewriteCod <%= condition.inject(:+).inject{|elem, acc| "#{elem.to_s} #{acc}"} %>
+  <% end%>	  
+  <%= "RewriteRule #{rewrite[:source]} #{rewrite[:target]}" %> <%= "#{'['+ rewrite[:flags].join(',') +']' if !rewrite[:flags].nil?}" %>
+  <% end %>

@@ -1,0 +1,24 @@
+[submodule "chef/cookbooks/apt"]
+	path = chef/cookbooks/apt
+	url = https://github.com/opscode-cookbooks/apt.git
+[submodule "chef/cookbooks/apache2"]
+	path = chef/cookbooks/apache2
+	url = https://github.com/opscode-cookbooks/apache2.git
+[submodule "chef/cookbooks/vim"]
+	path = chef/cookbooks/vim
+	url = https://github.com/opscode-cookbooks/vim.git
+[submodule "chef/cookbooks/ssh"]
+	path = chef/cookbooks/ssh
+	url = https://github.com/markolson/chef-ssh.git
+[submodule "chef/cookbooks/ruby_build"]
+	path = chef/cookbooks/ruby_build
+	url = https://github.com/fnichol/chef-ruby_build
+[submodule "chef/cookbooks/rbenv"]
+	path = chef/cookbooks/rbenv
+	url = https://github.com/fnichol/chef-rbenv
+[submodule "chef/cookbooks/iptables"]
+	path = chef/cookbooks/iptables
+	url = https://github.com/opscode-cookbooks/iptables.git
+[submodule "chef/cookbooks/logrotate"]
+	path = chef/cookbooks/logrotate
+	url = https://github.com/stevendanna/logrotate
