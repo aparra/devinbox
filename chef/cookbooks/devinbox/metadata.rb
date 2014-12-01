@@ -13,6 +13,7 @@ recipe "devinbox::jboss", "install JBoss AS"
 recipe "devinbox::maven", "install apache maven tool"
 recipe "devinbox::sbt", "install sbt tool"
 recipe "devinbox::workspace", "clone internal repositories"
+recipe "devinbox::dotfiles", "set personal configurations"
 
 %w{ apt apache2 }.each do |cookbook|
   depends cookbook

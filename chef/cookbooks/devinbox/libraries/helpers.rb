@@ -1,19 +1,28 @@
 class Chef
   class Recipe
     def clone_repo(param)
-      repo_dir = "#{param[:to]}/#{param[:name]}"
+      repo_name = param[:uri].gsub(/.*\/(.*)\.git/) { $1 }    
+      repo_dir = "#{param[:to]}/#{repo_name}"
+
       git repo_dir do
-        repository "git+ssh://git@git.server/git/#{param[:name]}.git"
-        reference "#{param[:branch]}"
+        repository param[:uri]
+        reference param[:branch]
         action :sync
         user "vagrant"
         group "vagrant"
         not_if { ::File.exists?(repo_dir) }
       	notifies :run, "execute[checkout_branch]"
+	notifies :run, "execute[update_submodule]"
       end
 
       execute "checkout_branch" do 
-        command "cd #{param[:to]}/#{param[:name]} && git checkout #{param[:branch]}"
+        command "cd #{repo_dir} && git checkout #{param[:branch]}"
+        user "vagrant"
+        group "vagrant"
+      end
+
+      execute "update_submodule" do 
+        command "cd #{repo_dir} && git submodule init && git submodule update"
         user "vagrant"
         group "vagrant"
       end
