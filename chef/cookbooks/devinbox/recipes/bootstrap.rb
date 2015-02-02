@@ -22,6 +22,6 @@ end
   package lib
 end
 
-[env(:base_dir), env(:download), env(:development), env(:java), env(:jboss), env(:m2_repo)].each do |dir_name|
+[env(:base_dir), env(:download), env(:development), env(:workspace), env(:java), env(:jboss), env(:m2_repo)].each do |dir_name|
   mkdir dir_name
 end
