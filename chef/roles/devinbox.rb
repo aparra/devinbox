@@ -10,6 +10,7 @@ run_list(
   "recipe[devinbox::eclipse_scala]",
   "recipe[devinbox::jboss]",
   "recipe[devinbox::npm_packages]",
+  "recipe[devinbox::docker]",
   "recipe[ruby_build]",
   "recipe[rbenv::user]",
   "recipe[rbenv::vagrant]",
