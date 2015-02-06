@@ -12,9 +12,10 @@ clone_repo({
 
 dotfiles_dir = "#{env(:workspace)}/dotfiles"
 
-execute "create symbolic links to my personal configuration" do
+execute "create symbolic links to my VIM personal configuration" do
   command <<-EOH
     ln -sf #{dotfiles_dir}/.vim /home/vagrant
+    ln -sf #{dotfiles_dir}/.vimrc /home/vagrant
   EOH
   user "root"
 end
