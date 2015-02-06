@@ -18,7 +18,7 @@ apt_repository "chris-lea-node.js" do
   action :add
 end
 
-%w{ git meld nodejs make zip unzip }.each do |lib|
+%w{ git meld nodejs make zip unzip vim-gnome }.each do |lib|
   package lib
 end
 
