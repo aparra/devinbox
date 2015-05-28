@@ -124,7 +124,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.cookbooks_path = ["chef/cookbooks"]
     chef.data_bags_path = "chef/data_bags"
     chef.roles_path = "chef/roles"
-    chef.add_role "ericsson"
+    chef.add_role "devinbox"
     chef.custom_config_path = "Vagrantfile.chef"
 
     chef.json = {
