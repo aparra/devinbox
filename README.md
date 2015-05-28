@@ -1,6 +1,7 @@
 devinbox
 ========
-depends vagrant-omnibus
+install vagrant-omnibus
+
 vagrant plugin install vagrant-omnibus
 
 # Notes
