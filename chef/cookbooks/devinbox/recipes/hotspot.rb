@@ -21,7 +21,6 @@ def extract(jdk_file)
       tar xzf #{jdk_file} -C #{env(:java)}
       chown -R vagrant:vagrant #{env(:java)}
     EOH
-    not_if { ::File.exists?(jdk_file) }   
   end
 end  
 
