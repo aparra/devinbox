@@ -18,13 +18,6 @@ bash 'extract_maven' do
   action :nothing
 end
 
-directory env(:m2_repo) do
-  owner "vagrant"
-  group "vagrant"
-  action :create
-  mode 0765
-end
-
 export_variables({
   MAVEN_HOME: "#{env(:development)}/apache-maven-3.1.1",
   PATH: "$PATH:$MAVEN_HOME/bin"
